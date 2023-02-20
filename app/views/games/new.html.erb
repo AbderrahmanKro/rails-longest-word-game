@@ -1,0 +1,17 @@
+<h1>New game</h1>
+<p class="mb-4 d-flex justify-content-center">Here are your 10 random letters:</p>
+
+<div class="d-flex justify-content-center align-items-center flex-wrap mb-5">
+  <% @letters.each do |letter| %>
+    <div class="bg-light rounded p-5 m-3" style="font-size: 2rem;">
+      <%= letter %>
+    </div>
+  <% end %>
+</div>
+
+<form action="score" method="post" data-turbo="false">
+  <input type="text" name="answer">
+  <input type="submit" value="Enter your word!">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <%= hidden_field_tag :letters, @letters %>
+</form>
